@@ -46,7 +46,6 @@ public class Recursion {
         System.out.println(fibnocci(num));
         func(6, 6);
         System.out.println(factorial(4));
-        int arr[] = { 1, 2, 3, 4, 5, 6 };
     }
 
 }
