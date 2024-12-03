@@ -4,8 +4,6 @@ import java.util.*;
 
 public class Recursion {
 
-    // Recursive method to calculate Fibonacci number
-    // Takes an integer fib as parameter
     public static int fibnocci(int fib) {
         // Base case: If fib is 0 or 1, return 1
         if (fib == 0 || fib == 1)
@@ -14,8 +12,6 @@ public class Recursion {
         return fibnocci(fib - 1) + fibnocci(fib - 2);
     }
 
-    // Iterative method to calculate sum of first n numbers
-    // Takes an integer num as parameter
     public static int sumOfFirstNum(int num) {
         // Initialize sum to 0
         int sum = 0;
@@ -23,12 +19,9 @@ public class Recursion {
         for (int i = 1; i <= num; i++) {
             sum += i;
         }
-        // Return the sum
         return sum;
     }
 
-    // Recursive method to calculate sum of first n numbers
-    // Takes an integer num as parameter
     public static int sumOf(int num) {
         // Base case: If num is less than 1, return 0
         if (num < 1) {
@@ -38,8 +31,6 @@ public class Recursion {
         return num + sumOf(num - 1);
     }
 
-    // Recursive method to print numbers from i to 1
-    // Takes integers i and n as parameters
     public static void func(int i, int n) {
         // Base case: If i is less than or equal to 0, return
         if (i <= 0)
@@ -50,8 +41,6 @@ public class Recursion {
         func(i - 1, n);
     }
 
-    // Recursive method to calculate factorial of a number
-    // Takes an integer num as parameter
     static int factorial(int num) {
         // Base case: If num is 0, return 1
         if (num == 0)
@@ -60,8 +49,6 @@ public class Recursion {
         return num * factorial(num - 1);
     }
 
-    // Method to reverse an array
-    // Takes an array and its size as parameters
     public static int[] reverse(int arr[], int size) {
         // Iterate from start and end of the array and swap elements
         for (int i = 0, j = size - 1; i < arr.length / 2; i++, j--) {
@@ -69,12 +56,9 @@ public class Recursion {
             arr[i] = arr[j];
             arr[j] = temp;
         }
-        // Return the reversed array
         return arr;
     }
 
-    // Recursive method to reverse an array
-    // Takes an array, start index i, and end index j as parameters
     public static int[] recursiveReverse(int arr[], int i, int j) {
         // Base case: If i is greater than or equal to j, return the array
         if (i >= j)
@@ -87,8 +71,7 @@ public class Recursion {
         return recursiveReverse(arr, i + 1, j - 1);
     }
 
-    // Method to reverse an array using a single pointer
-    // Takes an array and start index i as parameters
+    // Class level variable for single pointer reverse
     private static int size;
 
     public static int[] singlePointerReverse(int[] arr, int i) {
@@ -108,8 +91,6 @@ public class Recursion {
         return singlePointerReverse(arr, i + 1);
     }
 
-    // Method to check if a string is palindrome
-    // Takes a string as parameter
     public static boolean isPalindrom(String string) {
         // If string is blank, return false
         if (string.isBlank())
@@ -127,9 +108,7 @@ public class Recursion {
         return true;
     }
 
-    // Recursive method to check if a string is palindrome
-    // Takes a string and starting index i as parameters
-    // Uses class level length variable to store string length
+    // Class level variable for recursive palindrome check
     private static int length;
 
     public static boolean isPalindromRecursive(String string, int i) {
@@ -150,6 +129,17 @@ public class Recursion {
         }
         // Recursive call: move to next character pair
         return isPalindromRecursive(string, i + 1);
+    }
+
+    public static boolean isPalindromShort(String string, int i) {
+        // Base case: If we've checked half the string, it's a palindrome
+        if (i >= string.length() / 2)
+            return true;
+        // If characters at mirror positions don't match, not a palindrome
+        if (string.charAt(i) != string.charAt(string.length() - i - 1))
+            return false;
+        // Recursive call: Check next character pair
+        return isPalindromShort(string, i + 1);
     }
 
     public static void main(String[] args) {
