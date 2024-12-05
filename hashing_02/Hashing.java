@@ -1,7 +1,6 @@
 package hashing_02;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class Hashing {
     /**
@@ -20,44 +19,36 @@ public class Hashing {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        
-        // Step 1: Get array size and create array
+
+        // Step 1: Create dynamic array list to store input elements
+        List<Integer> array = new ArrayList<>();
         int size = scan.nextInt();
-        int arr[] = new int[size];
 
-        // Step 2: Initialize array with input values
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = scan.nextInt();
+        // Step 2: Input array elements
+        for (int i = 0; i < size; i++) {
+            array.add(scan.nextInt());
         }
-        // Print array for verification
-        System.out.println(Arrays.toString(arr));
 
-        // Step 3: Create hash array
-        // Find maximum element to determine hash array size
-        int hashSize = Arrays.stream(arr).max().getAsInt();
-        // Create hash array with size = max_element + 1 (to include the max element)
-        int[] hash = new int[hashSize + 1];
-        // Initialize hash array with zeros
-        Arrays.fill(hash, 0);
-        
-        // Step 4: Fill hash array with frequencies
-        // Count frequency of each element
-        for (int i = 0; i < arr.length; i++) {
-            hash[arr[i]]++; // Increment count at index equal to array element
+        // Step 3: Create and initialize hash array
+        // Size of hash array = maximum element + 1 (to include the max element as valid
+        // index)
+        int sizeOfHash = Collections.max(array) + 1;
+        Integer hash[] = new Integer[sizeOfHash];
+        Arrays.fill(hash, 0); // Initialize all elements to 0
+
+        // Step 4: Precompute frequencies
+        // Count frequency of each element using hash array
+        for (int i = 0; i < array.size(); i++) {
+            hash[array.get(i)]++;
         }
 
         // Step 5: Process queries
-        // Get number of queries
         int queries = scan.nextInt();
-        // Process each query
-        while (queries > 0) {
+        while (queries-- > 0) {
             int number = scan.nextInt();
-            // Print frequency of queried number
             System.out.println(number + " has occured " + hash[number] + " times");
-            queries--;
         }
 
-        // Close scanner to prevent resource leak
         scan.close();
     }
 }
