@@ -24,7 +24,8 @@ public class HashingProblem {
         // // print the hashMap
         // System.out.println(map);
         // // using foreach
-        // map.forEach((key, value) -> System.out.println("Key: " + key + "--> value: " + value));
+        // map.forEach((key, value) -> System.out.println("Key: " + key + "--> value: "
+        // + value));
 
         // Process queries and print frequencies
 
@@ -33,6 +34,22 @@ public class HashingProblem {
             int number = scan.nextInt();
             System.out.println(number + " has occured " + map.getOrDefault(number, 0) + " times");
         }
+        // Finding the max and min keyValue pair
+        Map.Entry<Integer, Integer> maxEntry = null;
+        Map.Entry<Integer, Integer> minEntry = null;
+
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (maxEntry == null || entry.getValue() > maxEntry.getValue()) {
+                maxEntry = entry;
+            }
+            if (minEntry == null || entry.getValue() < minEntry.getValue()) {
+                minEntry = entry;
+            }
+        }
+
+        System.out.println("Maximum frequency is: Number--> " + maxEntry.getKey() + " Value--> " + maxEntry.getValue());
+        System.out.println("Minimum frequency is: Number--> " + minEntry.getKey() + " Value--> " + minEntry.getValue());
+
         scan.close();
 
     }
