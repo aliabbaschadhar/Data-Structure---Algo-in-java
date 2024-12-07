@@ -4,7 +4,8 @@ import java.util.*;
 
 /**
  * Implementation of Bubble Sort Algorithm
- * Time Complexity: O(n²)
+ * Time Complexity: O(n²)(worst and average)
+ * Best Case: O(n) when the array is already sorted
  * Space Complexity: O(1)
  */
 public class Bubble {
@@ -15,11 +16,11 @@ public class Bubble {
     static void bubbleSort(int[] arr) {
         int size = arr.length;
         boolean swapped;
-        
+
         // Outer loop runs from first to last element
         for (int i = 0; i < size - 1; i++) {
             swapped = false;
-            
+
             // Inner loop compares adjacent elements and swaps if needed
             // After i iterations, last i elements are already sorted
             for (int j = 0; j < size - 1 - i; j++) {
@@ -32,7 +33,7 @@ public class Bubble {
                     swapped = true;
                 }
             }
-            
+
             // If no swapping occurred, array is already sorted
             if (!swapped) {
                 break;
